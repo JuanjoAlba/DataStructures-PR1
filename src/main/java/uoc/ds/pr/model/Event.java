@@ -62,17 +62,21 @@ public class Event {
         return registered;
     }
 
+    public QueueArrayImpl<Attendee> getRegisteredSubstitutes() {
+        return registeredSubstitutes;
+    }
+
     public void addSubstitute (Attendee attendee) {
         this.registeredSubstitutes.add(attendee);
     }
 
-    public double rating () {
-        if (this.ratings.isEmpty()) return 0;
-        int totalRating = 0;
+    public Double rating () {
+        if (this.ratings.isEmpty()) return 0D;
+        double totalRating = 0;
         Iterator<Rating> iter = this.ratings.values();
         while (iter.hasNext()) {
             totalRating += iter.next().rating.getValue();
         }
-        return totalRating / this.ratings.size();
+        return Math.round((totalRating / this.ratings.size())*100) / 100.0;
     }
 }

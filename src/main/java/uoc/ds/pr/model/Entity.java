@@ -7,14 +7,12 @@ public class Entity {
     private String id;
     private String name;
     private String description;
-    private UniversityEvents.EntityType entityType;
     private LinkedList<Event> eventsOrganized = new LinkedList<>();
 
-    public Entity(String id, String name, String description, UniversityEvents.EntityType entityType) {
+    public Entity(String id, String name, String description) {
         setId(id);
         setName(name);
         setDescription(description);
-        setEntityType(entityType);
     }
 
     public String getId() {
@@ -39,14 +37,6 @@ public class Entity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public UniversityEvents.EntityType getEntityType() {
-        return entityType;
-    }
-
-    public void setEntityType(UniversityEvents.EntityType entityType) {
-        this.entityType = entityType;
     }
 
     public void addEventsOrganized(Event eventsOrganized) {

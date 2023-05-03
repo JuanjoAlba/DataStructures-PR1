@@ -10,7 +10,7 @@ public class Attendee {
     private String name;
     private String surname;
     private LocalDate dateOfBrith;
-    private LinkedList<Event> eventsAttended;
+    private LinkedList<Event> eventsAttended = new LinkedList<>();
 
     public Attendee(String id, String name, String surname, LocalDate dateOfBrith) {
         this.id = id;

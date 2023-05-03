@@ -8,7 +8,7 @@ import uoc.ds.pr.model.Student;
 
 public class EntityMediator {
 
-    private Entity createEntity (String id, String name, String description, UniversityEvents.EntityType entityType) {
+    public static Entity createEntity (String id, String name, String description, UniversityEvents.EntityType entityType) {
         Entity entity = null;
         switch (entityType) {
             case STUDENT -> {
@@ -22,17 +22,5 @@ public class EntityMediator {
             }
         }
         return entity;
-    }
-
-    private Entity updateEntity (Entity entity, String name, String description, UniversityEvents.EntityType entityType) {
-        return null;
-    }
-
-    public static void createOrUpdateEntity (Entity entity, String name, String description, UniversityEvents.EntityType entityType) {
-
-    }
-
-    public static boolean checkEntityExists(String entityId) {
-        return false;
     }
 }
