@@ -11,8 +11,11 @@ import java.util.Comparator;
 
 public class OrderedVector<E> implements FiniteContainer<E> {
 
+    // Array of elements
     protected E[] elems;
+    // Next position to insert
     protected int n = 0;
+    // Comparator
     protected java.util.Comparator<E> comparator;
 
     public OrderedVector(int max, Comparator<E> comparator) {
@@ -41,17 +44,26 @@ public class OrderedVector<E> implements FiniteContainer<E> {
         if (isFull()) throw new FullContainerException();
         this.elems[n] = elem;
         ++this.n;
-        Arrays.sort(this.elems, this.comparator);
+        // Keep array in order
+        if (this.n > 1) Arrays.sort(this.elems, 0, this.n, this.comparator);
     }
 
     public void delete(E elem) {
         if (isEmpty()) throw new EmptyContainerException();
-        for (int i = 0; i < n; i++) {
+        int index = -1;
+        for (int i = 0; i < n - 1; i++) {
             if (this.elems[i].equals(elem)) {
-                this.elems[i] = null;
-                Arrays.sort(this.elems, this.comparator);
+                index = i;
                 break;
             }
         }
+        if (index != -1) {
+            for (int i = index; i < this.n - 1; i++) {
+                this.elems[i] = this.elems[i + 1];
+            }
+            this.elems[n-1] = null;
+            --this.n;
+        }
     }
+
 }
